@@ -1,31 +1,27 @@
-#include <stdio.h>
+#include <iostream>
+#include <vector>
+#include <math.h>
+using namespace std;
 
 int main()
 {
     int n;
-    scanf("%d",&n);
-    int a[n];
-    for (int i = 0; i < n;i++)
-        scanf("%d", &a[i]);
-    int flag = 1;
-    for (int i = 0; i < n;i++)
+    cin >> n;
+    vector<string> v;
+    v.push_back("0");
+    v.push_back("1");
+    while (v.size() < pow(2, n))
     {
-        while (flag==1)
+        int tmp = v.size();
+        for (int i = 0; i < tmp;i++)
         {
-            flag = 0;
-            for (int j = i; j < n - 1; j++)
-            {
-                
-                if (a[j]>a[j+1])
-                {
-                    flag = 1;
-                    int tmp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = tmp;
-                }
-            }
+            v.push_back("1" + v[tmp - 1 - i]);
+            v[tmp - 1 - i] = "0" + v[tmp - 1 - i];
         }
     }
-    for (int i = 0; i < n;i++)
-        printf("%d ", a[i]);
+    
+    for (int i = 0; i < v.size();i++)
+    {
+        cout << v[i] << endl;
+    }
 }
