@@ -1,17 +1,19 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
-#include <ctype.h>
 typedef long long ll;
 typedef double db;
 
 void solve()
 {
-    char a[100];
+    char a[102];
     gets(a);
-    for (int i = 0; i < strlen(a); i++)
-        if (a[i] != ' ')
-            printf("%c", a[i]);
+    char *p = strtok(a, " ");
+    while (p != NULL)
+    {
+        printf("%s\n", p);
+        p = strtok(NULL, " ");
+    }
 }
 
 int main()

@@ -7,14 +7,19 @@ typedef double db;
 
 void solve()
 {
-    char a[100];
+    char a[90];
     gets(a);
-    for (int i = 0; i < strlen(a); i++)
-        if (a[i] != ' ')
-            printf("%c", a[i]);
+    int 
 }
 
 int main()
 {
-    solve();
+    int t;
+    scanf("%d",&t);
+    getchar();
+    while(t--)
+    {
+        solve();
+        printf("\n");
+    }
 }
