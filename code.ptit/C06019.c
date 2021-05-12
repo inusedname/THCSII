@@ -7,40 +7,31 @@ typedef double db;
 
 void solve()
 {
-    char a[55];
+    char a[1000];
     gets(a);
+    int i, dem = 0;
     for (int i = 0; i < strlen(a); i++)
         a[i] = tolower(a[i]);
-    int i = 0;
-    char tmp;
-    while (!isalpha(a[i]))
-        i++;
-    printf("%c", a[i]);
-    i++;
-    for (; i < strlen(a); i++)
-    {
-        if (a[i] != ' ' && a[i - 1] == ' ')
+    for (int i = 0; i < strlen(a); i++)
+        if (isalpha(a[i]) && (a[i - 1] == ' ' || i == 0))
+            dem++;
+    for (i = 0; i < strlen(a); i++)
+        if (isalpha(a[i]) && (a[i - 1] == ' ' || i == 0))
         {
-            while (!isalpha(a[i]))
-                i++;
-            printf("%c", tmp);
-            tmp = a[i];
+            printf("%c", a[i]);
+            dem--;
+            if (dem == 1)
+                break;
         }
-    }
-    i = strlen(a) - 1;
-    while (a[i] == ' ')
+    for (i = i + 1; i < strlen(a); i++)
     {
-        i--;
-    }
-    for (; i >= 0; i--)
-    {
-        if (a[i] == ' ')
+        if (isalpha(a[i]) && a[i - 1] == ' ')
         {
-            i++;
-            // while (!isalpha(a[i]))
-            //     i++;
-            while (i != strlen(a))
-                printf("%c", a[i++]);
+            for (; i < strlen(a); i++)
+            {
+                if (isalnum(a[i]))
+                    printf("%c", a[i]);
+            }
             break;
         }
     }
