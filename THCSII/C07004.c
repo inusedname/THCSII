@@ -44,7 +44,7 @@ void solve()
     x = ucln(au + cu, bu);
     printf("%lld/%lld\n", (au + cu) / x, bu / x);
     x = ucln(a * d, b * c);
-    printf("%lld/%lld", (a * d) / x, (b * c) / x);
+    printf("%lld/%lld\n", (a * d) / x, (b * c) / x);
     dem++;
 }
 
