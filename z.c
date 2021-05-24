@@ -1,44 +1,63 @@
 #include <stdio.h>
-int a[100];
-int Ktra(int a[], int l, int r)
-{
-    for (int i = l; i < r; i++)
-    {
-        if (a[i] > a[i + 1])
-            return 0;
-    }
-    return 1;
-}
+#include <string.h>
+#include <ctype.h>
+
 int main()
 {
-    int n;
-    scanf("%d", &n);
-    int dem = 1;
-    for (int i = 0; i < n; i++)
+    int t;
+    scanf("%d ", &t);
+    while (t--)
     {
-        scanf("%d", &a[i]);
-    }
-    printf("Buoc 0: %d\n", a[0]);
-    for (int i = 1; i < n; i++)
-    {
-        int ViTri = i;
-        int ok = 0;
-        while (ViTri > 0 && a[ViTri] < a[ViTri - 1])
+        char s[100], ho[10], b[100], *token;
+        gets(s);
+        int d = strlen(s);
+        for (int i = 0; i < d; i++)
         {
-            int t = a[ViTri];
-            a[ViTri] = a[ViTri - 1];
-            a[ViTri - 1] = t;
-            ViTri--;
-            ok = 1;
+            // if (s[i] >= 65 && s[i] <= 90)
+            // {
+            //     s[i] += 32;
+            // }
+            if (isalpha(s[i]))
+                s[i] = tolower(s[i]);
         }
-        printf("Buoc %d: ", dem);
-        dem++;
-        for (int j = 0; j <= i; j++)
+        int p = 0;
+        int i;
+        for (i = 0; i < d; i++)
         {
-            printf("%d ", a[j]);
+            if (isalpha(s[i]))
+            {
+                while (isalpha(s[i]))
+                {
+                    ho[p] = s[i];
+                    p++;
+                    i++;
+                }
+                break;
+            }
+        }
+        // printf("%d", p);
+        // int k = p;
+        // int j = 0;
+        // for (int i = k; i < d; i++)
+        // {
+        //     b[j] = s[i];
+        //     j++;
+        // }
+        // ->>>
+        strcpy(b, s + i);
+        //
+        token = strtok(b, " ");
+        while (token != NULL)
+        {
+            *token = toupper(*token); // *token=token-32
+            printf("%s ", token);
+            token = strtok(NULL, " ");
+        }
+        printf(", ");
+        for (int i = 0; i < p; i++)
+        {
+            printf("%c", toupper(ho[i]));
         }
         printf("\n");
-        if (Ktra(a, 0, n - 1))
-            return 0;
     }
 }

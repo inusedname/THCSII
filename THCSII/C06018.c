@@ -2,14 +2,15 @@
 #include <math.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 typedef long long ll;
 typedef double db;
 
 void solve()
 {
-    char s1[101], s2[101];
-    char s1tok[50][101];
-    char ans[50][101];
+    char s1[201], s2[201];
+    char s1tok[50][201];
+    char ans[50][201];
     int n = 0;
     gets(s1);
     gets(s2);
@@ -42,7 +43,7 @@ void solve()
         if (!flag)
             strcpy(ans[m++], s1tok[i]);
     }
-    char tmp[100];
+    char tmp[201];
     for (int i = 0; i < m; i++)
         for (int j = i + 1; j < m; j++)
             if (strcmp(ans[i], ans[j]) > 0)
@@ -54,8 +55,14 @@ void solve()
     for (int i = 0; i < m; i++)
         printf("%s ", ans[i]);
 }
-
 int main()
 {
-    solve();
+    int t;
+    scanf("%d",&t);
+    getchar();
+    while(t--)
+    {
+        solve();
+        printf("\n");
+    }
 }

@@ -10,19 +10,32 @@ void solve()
     char a[25];
     gets(a);
     int flag = 0;
-    int i;
-    for (i = 0; i < strlen(a) / 2; i++)
+    int left = 0;
+    int right = strlen(a) - 1;
+    while (left < right)
     {
-        if (a[i] != a[strlen(a) - 1 - i])
+        if (a[left] != a[right])
         {
-            if (flag == 0)
-                flag = 1;
-            else
+            if (flag)
             {
                 printf("NO");
                 return;
             }
+            if (a[left + 1] == a[right])
+            {
+                flag = 1;
+                left++;
+            }
+            else if (a[left] == a[right - 1])
+            {
+                flag = 1;
+                right--;
+            }
+            else
+                flag = 1;
         }
+        left++;
+        right--;
     }
     printf("YES");
 }
@@ -34,7 +47,6 @@ int main()
     getchar();
     while (t--)
     {
-        getchar();
         solve();
         printf("\n");
     }
